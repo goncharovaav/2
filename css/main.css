@@ -1,0 +1,690 @@
+/* ========================================================
+   1. ПОДКЛЮЧЕНИЕ ШРИФТА (@font-face)
+   ======================================================== */
+@font-face {
+    font-family: 'Jura';
+    src: url('../fonts/Jura.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ========================================================
+   2. ПЕРЕМЕННЫЕ И ОБЩИЕ ПАРАМЕТРЫ
+   ======================================================== */
+:root {
+    --bg-primary: #2c3e50;         /* Основной фирменный темно-синий цвет */
+    --accent-orange: rgb(255, 72, 0); /* Фирменный оранжевый акцент */
+    --text-white: #ffffff;
+    --transition-smooth: all 0.3s ease; /* Плавность для анимаций */
+}
+
+/* Базовый сброс стилей браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Чтобы padding не ломал ширину блоков */
+}
+
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка по якорным ссылкам меню */
+}
+
+body {
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: var(--bg-primary);
+    color: var(--text-white);
+    font-family: 'Jura', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden; /* Защита от горизонтальной полосы прокрутки */
+}
+
+/* Общие стили для ссылок, кнопок и полей ввода */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+button, input {
+    font-family: 'Jura', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ========================================================
+   3. ФИКСИРОВАННАЯ ШАПКА (HEADER) - СКРИНШОТ 1
+   ======================================================== */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-primary);
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+}
+
+header .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+header .logo h1 {
+    font-size: 38px;
+    color: var(--text-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition-smooth);
+}
+
+header .logo h1 span {
+    color: var(--accent-orange);
+}
+
+/* Анимация логотипа при наведении */
+header .logo:hover h1 {
+    transform: scale(1.05);
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-white);
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Анимация ссылок в шапке (подчеркивание + цвет) */
+nav a:hover {
+    color: var(--accent-orange);
+    transform: translateY(-2px);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent-orange);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ========================================================
+   4. СЕКЦИЯ "О НАС" (СЕКЦИЯ 1) - СКРИНШОТ 1
+   ======================================================== */
+#about {
+    padding: 160px 40px 100px; /* Большой верхний отступ из-за fixed шапки */
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-primary);
+}
+
+#about .container {
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#about h2 {
+    text-align: center;
+    font-size: 54px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease forwards;
+}
+
+.about {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.about .text {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.about h3 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.about p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #ecf0f1;
+}
+
+.about .img {
+    width: 38%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .img img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.about .img img:hover {
+    transform: scale(1.05) rotate(1deg); /* Плавное увеличение дракона */
+}
+
+/* ========================================================
+   5. СЕКЦИЯ "УМНЫЙ ДОМ" (КАРТОЧКИ) - СКРИНШОТ 2
+   ======================================================== */
+#smart-home {
+    background-color: #ffffff;
+    color: var(--bg-primary);
+    padding: 90px 40px 110px;
+}
+
+#smart-home .container {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+#smart-home h2 {
+    font-size: 52px;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.smart-home {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    justify-content: space-between;
+}
+
+.smart-home article {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dcdde1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация на 5 */
+    overflow: hidden;
+}
+
+/* При наведении карточка всплывает вверх */
+.smart-home article:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.smart-home h3 {
+    font-size: 26px;
+    text-align: center;
+    padding: 20px 15px 15px;
+    font-weight: bold;
+}
+
+.smart-home .img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.smart-home .img img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.smart-home article:hover .img img {
+    transform: scale(1.06); /* Картинка приятно приближается */
+}
+
+article p {
+    font-size: 18px;
+    padding: 20px 15px;
+    text-align: center;
+    min-height: 80px;
+    flex-grow: 1; /* Равномерная высота всех карточек */
+    color: #2c3e50;
+    line-height: 1.4;
+}
+
+article .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-top: 1px solid #dcdde1;
+    background-color: #fafafa;
+}
+
+article .bottom span {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--bg-primary);
+}
+
+article .bottom a {
+    color: var(--text-white);
+    background-color: var(--bg-primary);
+    padding: 10px 24px;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+    transition: var(--transition-smooth);
+}
+
+/* Кнопка "Купить" становится оранжевой при наведении */
+article .bottom a:hover {
+    background-color: var(--accent-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 72, 0, 0.4);
+}
+
+/* ========================================================
+   6. СЕКЦИЯ "ПОДПИСАТЬСЯ" (ШАХМАТНАЯ ФОРМА) - СКРИНШОТ 3
+   ======================================================== */
+#subscribe {
+    background-color: var(--bg-primary);
+    color: var(--text-white);
+    padding: 90px 40px 110px;
+    display: flex;
+    justify-content: center;
+}
+
+#subscribe .container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#subscribe h2 {
+    font-size: 52px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subscribe-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Общий ряд формы */
+.subscribe-form form > div:not(.buttons) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+}
+
+/* Шахматный порядок (Скриншот 3):
+   1, 3, 5: Поле слева, Текст справа
+   2, 4: Текст слева, Поле справа */
+.subscribe-form div.email label    { order: 2; text-align: left; }
+.subscribe-form div.email input    { order: 1; }
+
+.subscribe-form div.fio label      { order: 1; text-align: right; }
+.subscribe-form div.fio input      { order: 2; }
+
+.subscribe-form div.social label   { order: 2; text-align: left; }
+.subscribe-form div.social input   { order: 1; }
+
+.subscribe-form div.login label    { order: 1; text-align: right; }
+.subscribe-form div.login input    { order: 2; }
+
+.subscribe-form div.password label { order: 2; text-align: left; }
+.subscribe-form div.password input { order: 1; }
+
+.subscribe-form label {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 46%;
+    letter-spacing: 1px;
+}
+
+.subscribe-form input {
+    width: 48%;
+    padding: 14px 20px;
+    font-size: 18px;
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 2px solid transparent;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+/* Плавная подсветка поля ввода при клике */
+.subscribe-form input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 12px rgba(255, 72, 0, 0.5);
+}
+
+.subscribe-form .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.subscribe-form button {
+    background-color: #ffffff;
+    color: var(--bg-primary);
+    border: none;
+    padding: 16px 65px;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+}
+
+.subscribe-form button:hover {
+    background-color: var(--accent-orange);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 72, 0, 0.4);
+}
+
+/* ========================================================
+   7. ПОДВАЛ И КОНТАКТЫ - СКРИНШОТ 4
+   ======================================================== */
+footer {
+    background-color: #ffffff;
+    color: var(--bg-primary);
+    padding: 80px 40px 60px;
+}
+
+footer .container {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+footer .container h2 {
+    font-size: 52px;
+    text-align: center;
+    padding-bottom: 60px;
+    font-weight: bold;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 60px;
+}
+
+.map {
+    width: 50%;
+}
+
+.map img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    object-fit: cover;
+    border: 1px solid #bdc3c7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.contacts-and-social {
+    width: 46%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contacts, .social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contacts-and-social h3 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.contacts a {
+    color: var(--bg-primary);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contacts a:hover {
+    color: var(--accent-orange);
+}
+
+/* Ссылки контактов разнесены по краям как на скриншоте 4 */
+.contacts a:nth-child(2) {
+    align-self: flex-start;
+}
+
+.contacts a:nth-child(3) {
+    align-self: flex-end;
+}
+
+/* Кнопки соцсетей лесенкой (Скриншот 4) */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.social-links a {
+    font-size: 18px;
+    padding: 12px 28px;
+    border: 1px solid var(--bg-primary);
+    color: var(--bg-primary);
+    font-weight: bold;
+    width: fit-content;
+    transition: var(--transition-smooth);
+}
+
+.social-links a:hover {
+    background-color: var(--bg-primary);
+    color: #ffffff;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Лесенка */
+.social-links a:nth-child(1) { align-self: flex-end; }
+.social-links a:nth-child(2) { align-self: center; }
+.social-links a:nth-child(3) { align-self: flex-start; }
+
+/* --------------------------------------------------------
+   НИЖНИЙ ЛОГОТИП DRAGONZ™ В ПОДВАЛЕ (СКРИНШОТ 4)
+   (В HTML это пустой тег <div> в самом конце подвала)
+   -------------------------------------------------------- */
+footer > div:last-child {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 44px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+footer > div:last-child::before {
+    content: "DRAGON";
+    color: var(--bg-primary);
+}
+
+footer > div:last-child::after {
+    content: "Z™";
+    color: var(--accent-orange);
+}
+
+/* ========================================================
+   8. АНИМАЦИИ НА ОЦЕНКУ 5 (@keyframes)
+   ======================================================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================
+   9. АДАПТИВНАЯ МОБИЛЬНАЯ ВЕРСИЯ (@media)
+   ======================================================== */
+@media (max-width: 900px) {
+    /* 1. Шапка */
+    header .container {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    nav {
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 17px;
+    }
+
+    /* 2. Секция "О нас" */
+    #about {
+        padding: 150px 20px 60px;
+    }
+
+    #about h2 {
+        font-size: 38px;
+    }
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .about .text, .about .img {
+        width: 100%;
+    }
+
+    /* 3. Секция "Умный дом" */
+    #smart-home {
+        padding: 60px 20px;
+    }
+
+    #smart-home h2 {
+        font-size: 38px;
+        margin-bottom: 35px;
+    }
+
+    .smart-home {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* 4. Секция формы */
+    #subscribe {
+        padding: 60px 20px;
+    }
+
+    #subscribe h2 {
+        font-size: 38px;
+        margin-bottom: 35px;
+    }
+
+    .subscribe-form form > div:not(.buttons) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .subscribe-form label {
+        width: 100%;
+        text-align: left !important;
+        font-size: 18px;
+        order: 1 !important; /* Текст всегда сверху над инпутом */
+    }
+
+    .subscribe-form input {
+        width: 100%;
+        order: 2 !important; /* Инпут всегда под текстом */
+    }
+
+    .subscribe-form button {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    /* 5. Подвал */
+    footer {
+        padding: 60px 20px 40px;
+    }
+
+    footer .container h2 {
+        font-size: 34px;
+        padding-bottom: 35px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .map, .contacts-and-social {
+        width: 100%;
+    }
+
+    .contacts a:nth-child(2),
+    .contacts a:nth-child(3),
+    .social-links a:nth-child(1),
+    .social-links a:nth-child(2),
+    .social-links a:nth-child(3) {
+        align-self: center; /* Центрируем кнопки на телефоне */
+        width: 100%;
+        text-align: center;
+    }
+
+    footer > div:last-child {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+}
